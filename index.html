@@ -28,152 +28,75 @@
             padding: 0 40px;
         }
 
-        /* 参照画像に合わせたヘッダー周りの追加CSS */
-        .top-bar {
-            background-color: #fff;
-            padding: 10px 40px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            color: #666;
-        }
-
-        .top-bar-left ul, .top-bar-right ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .top-bar-left a, .top-bar-right a {
-            text-decoration: none;
-            color: #666;
-            transition: color 0.3s ease;
-        }
-
-        .top-bar-left a:hover, .top-bar-right a:hover {
-            color: #007bff; /* ホバー色 */
-        }
-
-        .top-bar-right .login-btn {
-            background-color: #5C3D7F; /* ヤマハのLPのボタン色に合わせる */
-            color: #fff;
-            padding: 8px 15px;
-            border-radius: 4px;
-            font-weight: 500;
-        }
-
-        .top-bar-right .login-btn:hover {
-            background-color: #4F2E6C;
-        }
-
-        .main-logo {
-            padding: 20px 40px;
-            background-color: #fff;
-            border-bottom: 1px solid #eee;
-        }
-        .main-logo img {
-            height: 40px; /* ロゴの高さ調整 */
-        }
-        .main-logo .container {
-            display: flex;
-            align-items: center;
-        }
-        /* パンくずリスト */
-        .breadcrumbs {
-            font-size: 0.85rem;
-            color: #888;
-            margin-left: 20px;
-        }
-        .breadcrumbs a {
-            color: #888;
-            text-decoration: none;
-        }
-        .breadcrumbs a:hover {
-            text-decoration: underline;
-        }
-
-        /* Header */
+                /* Header */
         .header {
-            padding: 80px 0;
+            padding: 80px 0; /* 上下の余白を調整 */
             text-align: center;
-            position: relative;
-            /* 参照画像のようなグラデーション背景 */
-            background: linear-gradient(135deg, #00BCD4 0%, #00A2E8 100%);
-            color: white;
-            overflow: hidden; /* 背景模様がはみ出ないように */
+            position: relative; /* 子要素を絶対配置するための基準 */
+            /* ヘッダー背景画像パス (ご自身のローカルパス) */
+            background-image: url('image/a002.jpg'); /* HTMLファイルからの相対パス */
+            background-size: cover; /* 画像が要素全体を覆うように */
+            background-position: center; /* 画像を中央に配置 */
+            color: white; /* ヘッダー内の基本文字色を白に */
         }
 
-        /* ヘッダー背景用の軽い波紋模様 (簡易版) */
+        /* ヘッダー背景画像用のオーバーレイ（黒いフィルター） */
         .header::before {
             content: '';
             position: absolute;
-            top: -50px;
-            left: -50px;
-            right: -50px;
-            bottom: -50px;
-            background: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%),
-                        radial-gradient(circle at 90% 80%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
-            z-index: 1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3); /* 半透明の黒 */
+            z-index: 1; /* コンテンツより下に配置 */
         }
-        
+
+        /* ヘッダー内のコンテンツがフィルターより手前に来るように */
         .header .container {
             position: relative;
             z-index: 2;
         }
+
+        /* ヘッダー内の各テキストの色を白に変更 */
+        .header .main-title,
+        .header .subtitle {
+            color: #fff;
+        }
+
+        /* バッジのスタイルも背景に合わせて調整 */
+        .header .badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
         
         .badge {
             display: inline-block;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #fff;
+            background-color: #f5f5f5;
+            color: #666;
             padding: 8px 20px;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 500;
             margin-bottom: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 軽いシャドウ */
+            border: 1px solid #e0e0e0;
         }
         
         .main-title {
-            font-size: 3.8rem; /* タイトルを少し大きく */
+            font-size: 3.5rem;
             font-weight: 300;
-            color: #fff;
+            color: #2c2c2c;
             margin-bottom: 20px;
             letter-spacing: 0.05em;
-            line-height: 1.2;
         }
         
         .subtitle {
-            font-size: 1.2rem; /* サブタイトルを少し大きく */
-            color: #fff;
+            font-size: 1.1rem;
+            color: #666;
             font-weight: 400;
             line-height: 1.8;
             margin-bottom: 50px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-        }
-
-        /* Section Titles */
-        .section-title {
-            font-size: 2.2rem; /* セクションタイトルを大きく */
-            font-weight: 500;
-            color: #2c2c2c;
-            margin-bottom: 50px;
-            letter-spacing: 0.02em;
-            position: relative;
-            padding-bottom: 15px; /* 下線のために余白を追加 */
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 80px; /* 下線の幅 */
-            height: 3px; /* 下線の太さ */
-            background-color: #00BCD4; /* 水色の下線 */
-            border-radius: 2px;
         }
         
         /* Present Section */
@@ -681,7 +604,7 @@
                 </div>
                 <div class="feature-item fade-in">
                     <!-- アクセス良好のアイコン画像 (引き続きプレースホルダーです) -->
-                    <img src="https://placehold.jp/240x240.png?text=🚃" alt="アクセス良好アイコン" class="feature-icon">
+                    <img src="image/r008.jpg" alt="アクセス良好アイコン" class="feature-icon">
                     <h3 class="feature-title">アクセス良好</h3>
                     <p class="feature-description">JR和邇駅前のヤマハ音楽教室。湖西線沿線からもアクセス良好で、お気軽にご参加いただけます。</p>
                 </div>
