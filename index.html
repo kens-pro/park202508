@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ドレミぱーく - この夏だけの特別プレゼント【1～3歳限定】</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            background-color: #fafafa;
+            color: #333;
+            font-weight: 400;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        /* Header */
+        /* ▼▼▼【変更点1】ヘッダーの背景画像設定 ▼▼▼ */
+        .header {
+            padding: 80px 0; /* 上下の余白を調整 */
+            text-align: center;
+            position: relative; /* 子要素を絶対配置するための基準 */
+            /* ★★★ このURLにご自身のヘッダー画像パスを入れてください ★★★ */
+            background-image: url('https://images.unsplash.com/photo-1519939529363-c4a36e48d3c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+            background-size: cover; /* 画像が要素全体を覆うように */
+            background-position: center; /* 画像を中央に配置 */
+            color: white; /* ヘッダー内の基本文字色を白に */
+        }
+
+        /* ヘッダー背景画像用のオーバーレイ（黒いフィルター） */
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3); /* 半透明の黒 */
+            z-index: 1; /* コンテンツより下に配置 */
+        }
+
+        /* ヘッダー内のコンテンツがフィルターより手前に来るように */
+        .header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ヘッダー内の各テキストの色を白に変更 */
+        .header .main-title,
+        .header .subtitle {
+            color: #fff;
+        }
+
+        /* バッジのスタイルも背景に合わせて調整 */
+        .header .badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        /* ▲▲▲【変更点1】ここまで ▲▲▲ */
+        
+        .badge {
+            display: inline-block;
+            background-color: #f5f5f5;
+            color: #666;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: #2c2c2c;
+            margin-bottom: 20px;
+            letter-spacing: 0.05em;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 400;
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+        
+        /* Present Section */
+        .present-section {
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 50px;
+            letter-spacing: 0.02em;
+        }
+        
+        .present-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .present-item {
+            text-align: center;
+        }
+
+        /* ▼▼▼【変更点2】プレゼントアイコンのCSS修正 ▼▼▼ */
+        .present-icon {
+            width: 120px;
+            height: 120px;
+            background-color: #fff;
+            border: 2px solid #e8e8e8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.3s ease;
+            padding: 20px; /* アイコン画像の周りに余白を追加 */
+        }
+        
+        .present-icon:hover {
+            border-color: #d0d0d0;
+            transform: translateY(-2px);
+        }
+        
+        /* アイコン画像のスタイルを追加 */
+        .present-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* アスペクト比を保ちつつ、枠内に収める */
+        }
+        /* ▲▲▲【変更点2】ここまで ▲▲▲ */
+        
+        .present-name {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 10px;
+        }
+        
+        .present-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .price-highlight {
+            background-color: #fff;
+            border: 2px solid #e8e8e8;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        
+        .price-text {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 15px;
+        }
+        
+        .price-note {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #2c2c2c;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+        
+        .cta-button:hover {
+            background-color: #1a1a1a;
+            transform: translateY(-1px);
+        }
+        
+        /* Event Info */
+        .event-section {
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+        
+        .event-card {
+            background-color: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 50px;
+            margin: 40px 0;
+        }
+        
+        .date-highlight {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 25px;
+            letter-spacing: 0.02em;
+        }
+        
+        .event-details {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .event-details strong {
+            color: #2c2c2c;
+            font-weight: 500;
+        }
+        
+        .urgency-note {
+            background-color: #f8f8f8;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 30px 0;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        /* Features */
+        .features-section {
+            padding: 80px 0;
+            border-bottom: 1px solid #e8e8e8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .feature-item {
+            text-align: left;
+        }
+        
+        /* ▼▼▼【変更点3】特徴アイコンのCSS修正 ▼▼▼ */
+        .feature-icon {
+            width: 48px;  /* 画像の幅を指定 */
+            height: 48px; /* 画像の高さを指定 */
+            margin-bottom: 20px;
+            display: block;
+            object-fit: contain; /* アスペクト比を保つ */
+        }
+        /* ▲▲▲【変更点3】ここまで ▲▲▲ */
+        
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 15px;
+        }
+        
+        .feature-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Trust Section */
+        .trust-section {
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid #e8e8e8;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin: 50px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 300;
+            color: #2c2c2c;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 400;
+        }
+        
+        .testimonial {
+            background-color: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 50px 0;
+            text-align: left;
+        }
+        
+        .testimonial-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-size: 0.9rem;
+            color: #888;
+            text-align: right;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .final-title {
+            font-size: 2rem;
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 20px;
+            letter-spacing: 0.02em;
+        }
+        
+        .final-description {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .contact-info {
+            background-color: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        
+        .phone-number {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 15px;
+        }
+        
+        .contact-details {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .present-grid,
+            .features-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .event-card,
+            .contact-info {
+                padding: 30px;
+            }
+            
+            .present-icon {
+                width: 100px;
+                height: 100px;
+            }
+
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        /* Subtle animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="badge">この夏だけの特別プレゼント</div>
+            <h1 class="main-title">ドレミぱーく</h1>
+            <p class="subtitle">
+                音とリズムのワクワク45分<br>
+                まだ習いごとは早い？──いえ、むしろ今がチャンス
+            </p>
+        </div>
+    </header>
+
+    <!-- Present Section -->
+    <section class="present-section">
+        <div class="container">
+            <h2 class="section-title">8月参加者にプレゼント（先着20組）</h2>
+            <div class="present-grid fade-in">
+                <!-- ▼▼▼【変更点2】プレゼントアイコンを画像に変更 ▼▼▼ -->
+                <div class="present-item">
+                    <div class="present-icon">
+                        <!-- ★★★ この src にご自身の「うちわ」画像パスを入れてください ★★★ -->
+                        <img src="https://placehold.jp/80x80.png?text=うちわ" alt="ぷっぷるうちわ">
+                    </div>
+                    <div class="present-name">ぷっぷるうちわ</div>
+                    <div class="present-description">この夏だけの<br>特別デザイン</div>
+                </div>
+                <div class="present-item">
+                    <div class="present-icon">
+                        <!-- ★★★ この src にご自身の「シール」画像パスを入れてください ★★★ -->
+                        <img src="https://placehold.jp/80x80.png?text=シール" alt="オリジナルシール">
+                    </div>
+                    <div class="present-name">オリジナルシール</div>
+                    <div class="present-description">お子様が大喜び<br>記念シール</div>
+                </div>
+                <!-- ▲▲▲【変更点2】ここまで ▲▲▲ -->
+            </div>
+            
+            <div class="price-highlight fade-in">
+                <div class="price-text">参加費：500円</div>
+                <div class="price-note">はじめてのヤマハ音楽教室<br>リズムもお歌も、ママやお友達と</div>
+            </div>
+            
+            <a href="#event-info" class="cta-button">お申し込みはこちら</a>
+        </div>
+    </section>
+
+    <!-- Event Info -->
+    <section class="event-section" id="event-info">
+        <div class="container">
+            <h2 class="section-title">開催スケジュール</h2>
+            <div class="event-card fade-in">
+                <div class="date-highlight">8月21日（木）・ 8月22日（金）</div>
+                <div class="event-details">
+                    <strong>時間：</strong>両日とも10:30開始（45分間）<br>
+                    <strong>会場：</strong>ヤマハ音楽教室大津わにセンター<br>
+                    <strong>アクセス：</strong>JR湖西線和邇駅前（徒歩1分）<br>
+                    <strong>対象：</strong>1～3歳のお子様と保護者<br>
+                    <strong>参加費：</strong>500円/1組
+                </div>
+                <div class="urgency-note">
+                    定員になり次第締切となります
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">ドレミぱーくについて</h2>
+            <div class="features-grid">
+                <!-- ▼▼▼【変更点3】特徴アイコンを画像に変更 ▼▼▼ -->
+                <div class="feature-item fade-in">
+                    <!-- ★★★ この src にご自身の「音楽」アイコンパスを入れてください ★★★ -->
+                    <img src="https://placehold.jp/48x48.png?text=🎵" alt="音楽遊びアイコン" class="feature-icon">
+                    <h3 class="feature-title">音楽遊びが中心</h3>
+                    <p class="feature-description">歌ったり、打楽器でリズム遊びをしたり。音楽に合わせて身体を動かす楽しい45分間。先生の生演奏も大人気！</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <!-- ★★★ この src にご自身の「親子」アイコンパスを入れてください ★★★ -->
+                    <img src="https://placehold.jp/48x48.png?text=👨‍👩‍👧" alt="親子の絆アイコン" class="feature-icon">
+                    <h3 class="feature-title">親子の絆を深める</h3>
+                    <p class="feature-description">音楽を通した豊かな親子のふれあいの中で、お子さまも、ママ・パパも、みんながにっこり笑顔になれます。</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <!-- ★★★ この src にご自身の「アクセス」アイコンパスを入れてください ★★★ -->
+                    <img src="https://placehold.jp/48x48.png?text=🚃" alt="アクセス良好アイコン" class="feature-icon">
+                    <h3 class="feature-title">アクセス良好</h3>
+                    <p class="feature-description">JR和邇駅前のヤマハ音楽教室。湖西線沿線からもアクセス良好で、お気軽にご参加いただけます。</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <!-- ★★★ この src にご自身の「表現力」アイコンパスを入れてください ★★★ -->
+                    <img src="https://placehold.jp/48x48.png?text=💡" alt="表現力アイコン" class="feature-icon">
+                    <h3 class="feature-title">表現力を引き出す</h3>
+                    <p class="feature-description">ご家庭ではなかなか味わえない多彩な音楽体験で、お子さまの自発的な表現意欲を引き出します。</p>
+                </div>
+                <!-- ▲▲▲【変更点3】ここまで ▲▲▲ -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="container">
+            <h2 class="section-title">実績</h2>
+            <div class="stats-grid fade-in">
+                <div class="stat-item">
+                    <span class="stat-number">200</span>
+                    <div class="stat-label">参加者数</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">0</span>
+                    <div class="stat-label">泣いて帰った子の数</div>
+                </div>
+            </div>
+            <p style="color: #666; margin-bottom: 40px;">
+                はじめての先生も、はじめてのお友達も、<br>
+                いっしょに音楽を楽しむ仲間です
+            </p>
+            
+            <div class="testimonial fade-in">
+                <p class="testimonial-text">
+                    普段の様子から想像もできないような、積極性と笑い声。お母さんの心配をよそに、ちゃんとご挨拶が出来たり、タンブリンを一人で取りに行けたり、リズムがちゃんと合わせられたり。このサプライズをお父さんに報告する姿を想像すると、それはハッピーになりますよね。
+                </p>
+                <div class="testimonial-author">参加者ママより</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2 class="final-title">お申し込み</h2>
+            <p class="final-description">
+                8月だけの限定プレゼントあり（先着20組）<br>
+                お子さまの成長の瞬間を、親子で一緒に
+            </p>
+            
+            <div class="contact-info fade-in">
+                <div class="phone-number">0740-22-2063</div>
+                <div class="contact-details">
+                    受付時間：平日 10:30-19:30　月休<br>
+                    ヤマハ音楽教室　株式会社トリイ<br>
+                    <br>
+                    定員になり次第締切となりますので、<br>
+                    お早めにお申し込みください
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
