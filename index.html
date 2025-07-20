@@ -27,18 +27,16 @@
             padding: 0 40px;
         }
         
-        /* Header */
-        /* ▼▼▼【変更点1】ヘッダーの背景画像設定 ▼▼▼ */
-        .header {
-            padding: 80px 0; /* 上下の余白を調整 */
-            text-align: center;
-            position: relative; /* 子要素を絶対配置するための基準 */
-            /* ★★★ このURLにご自身のヘッダー画像パスを入れてください ★★★ */
-            background-image: url('https://images.unsplash.com/photo-1519939529363-c4a36e48d3c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
-            background-size: cover; /* 画像が要素全体を覆うように */
-            background-position: center; /* 画像を中央に配置 */
-            color: white; /* ヘッダー内の基本文字色を白に */
-        }
+       .header {
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    /* ★★★ このURLをローカルパスに修正します ★★★ */
+    background-image: url('image/a002.jpg'); /* '2025年8月'フォルダからの相対パス */
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
 
         /* ヘッダー背景画像用のオーバーレイ（黒いフィルター） */
         .header::before {
