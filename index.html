@@ -207,6 +207,7 @@
             transition: all 0.3s ease;
             letter-spacing: 0.02em;
             box-shadow: 0 4px 10px rgba(92, 61, 127, 0.3); /* ボタンにシャドウ */
+            margin: 10px; /* ボタン間のスペースを追加 */
         }
         
         .cta-button:hover {
@@ -223,6 +224,15 @@
             border-bottom: 1px solid #e8e8e8;
         }
         
+        .section-title {
+            font-size: 2.2rem; /* セクションタイトルを拡大 */
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 50px;
+            letter-spacing: 0.02em;
+            text-align: center;
+        }
+
         .event-card {
             background-color: #fff;
             border: 1px solid #e8e8e8;
@@ -298,7 +308,7 @@
             height: 240px; /* 120pxから240pxに倍に拡大 */
             margin-bottom: 25px; /* 下の要素との余白を調整 */
             display: block;
-            object-fit: contain; /* アスペクト比を保つ */
+            object-fit: cover; /* アスペクト比を保ちつつ、画像を要素にフィットさせる */
             border-radius: 4px; /* 角丸を追加 (写真なので丸くしない) */
             box-shadow: 0 2px 6px rgba(0,0,0,0.08); /* 軽めのシャドウ */
         }
@@ -407,8 +417,16 @@
             margin: 40px auto; /* 中央寄せ */
             max-width: 550px; /* 幅を制限 */
             box-shadow: 0 4px 12px rgba(0,0,0,0.06); /* シャドウ */
+            display: flex; /* Flexboxを適用 */
+            flex-direction: column; /* 要素を縦に並べる */
+            align-items: center; /* 中央揃え */
         }
         
+        /* ボタンを横並びにするためのラッパー */
+        .contact-buttons-wrapper {
+            margin-bottom: 25px; /* ボタンの下に余白 */
+        }
+
         .phone-number {
             font-size: 2rem; /* 電話番号を拡大 */
             font-weight: 700; /* より太く */
@@ -485,7 +503,7 @@
             .present-description { font-size: 0.9rem; }
             .price-text { font-size: 1.3rem; }
             .price-note { font-size: 0.9rem; }
-            .cta-button { font-size: 1rem; padding: 15px 30px; }
+            .cta-button { font-size: 1rem; padding: 15px 30px; margin: 8px; } /* レスポンシブ時のボタン余白調整 */
             .date-highlight { font-size: 1.5rem; }
             .event-details { font-size: 0.95rem; }
             .feature-title { font-size: 1.1rem; }
@@ -561,7 +579,8 @@
                 <div class="price-note">はじめてのヤマハ音楽教室<br>リズムもお歌も、ママやお友達と</div>
             </div>
             
-            <a href="#event-info" class="cta-button">オンライン予約</a>
+            <!-- オンライン予約ボタンのリンクを修正 -->
+            <a href="https://www.toriimusic.co.jp/doremiform/" class="cta-button">オンライン予約</a>
             <a href="tel:0740222063" class="cta-button phone-cta-button">お電話はこちら</a>
         </div>
     </section>
@@ -657,8 +676,11 @@
             </p>
             
             <div class="contact-info fade-in">
-                <a href="#event-info" class="cta-button">オンライン予約</a>
-                <a href="tel:0740222063" class="cta-button phone-cta-button">お電話はこちら</a>
+                <div class="contact-buttons-wrapper">
+                    <!-- オンライン予約ボタンのリンクを修正 -->
+                    <a href="https://www.toriimusic.co.jp/doremiform/" class="cta-button">オンライン予約</a>
+                    <a href="tel:0740222063" class="cta-button phone-cta-button">お電話はこちら</a>
+                </div>
                 <div class="contact-details">
                     受付時間：平日 10:30-19:30　月休<br>
                     ヤマハ音楽教室　株式会社トリイ<br>
@@ -674,16 +696,21 @@
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                // "#"で始まるが、かつ "event-info" へのリンクのみにスムーススクロールを適用
+                // オンライン予約ボタンのリンクは対象外とする
+                if (this.getAttribute('href') === '#event-info') {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 }
             });
         });
+
 
         // Fade in animation
         const observerOptions = {
