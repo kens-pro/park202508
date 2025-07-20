@@ -124,10 +124,10 @@
             text-align: center;
         }
 
-        /* ▼▼▼【変更点1】プレゼントアイコンのサイズを拡大 ▼▼▼ */
+        /* ▼▼▼【変更点1】プレゼントアイコンのサイズをさらに拡大＆表示調整 ▼▼▼ */
         .present-icon {
-            width: 280px;  /* 180pxから280pxに拡大 */
-            height: 280px; /* 180pxから280pxに拡大 */
+            width: 280px;  /* 拡大 */
+            height: 280px; /* 拡大 */
             background-color: #fff;
             border: 2px solid #e8e8e8;
             border-radius: 50%;
@@ -136,19 +136,31 @@
             justify-content: center;
             margin: 0 auto 25px;
             transition: all 0.3s ease;
-            padding: 40px; /* パディングを30pxから40pxに調整 */
+            padding: 40px; /* パディングを調整 */
+            overflow: hidden; /* はみ出た画像を隠す */
         }
         
         .present-icon:hover {
             border-color: #d0d0d0;
             transform: translateY(-2px);
         }
+
+        /* present-icon内のリンクを親要素のサイズに合わせる */
+        .present-icon a {
+            display: flex; /* imgを中央に配置するため */
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none; /* リンクの下線を消す */
+        }
         
-        /* アイコン画像のスタイル (親要素に合わせてサイズ調整) */
+        /* アイコン画像のスタイル (親要素に合わせてサイズ調整、輪郭いっぱいに表示) */
         .present-icon img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* アスペクト比を保ちつつ、枠内に収める */
+            object-fit: cover; /* ★ここを contain から cover に変更★ */
+            border-radius: 50%; /* 親要素が丸いので、画像も丸くクリップされるように */
         }
         /* ▲▲▲【変更点1】ここまで ▲▲▲ */
         
@@ -265,10 +277,10 @@
             text-align: left;
         }
         
-        /* ▼▼▼【変更点2】特徴アイコンのサイズを拡大 ▼▼▼ */
+        /* ▼▼▼【変更点2】特徴アイコンのサイズを倍に拡大 ▼▼▼ */
         .feature-icon {
-            width: 120px;  /* 72pxから120pxに拡大 */
-            height: 120px; /* 72pxから120pxに拡大 */
+            width: 240px;  /* 120pxから240pxに倍に拡大 */
+            height: 240px; /* 120pxから240pxに倍に拡大 */
             margin-bottom: 20px;
             display: block;
             object-fit: contain; /* アスペクト比を保つ */
@@ -409,14 +421,14 @@
             
             /* ▼▼▼【変更点3】レスポンシブ時のアイコンサイズ調整をさらに拡大 ▼▼▼ */
             .present-icon {
-                width: 200px; /* スマートフォン表示時のサイズを140pxから200pxに調整 */
+                width: 200px; /* スマートフォン表示時のサイズを調整 */
                 height: 200px;
-                padding: 30px; /* パディングを25pxから30pxに調整 */
+                padding: 30px; /* パディングも調整 */
             }
 
             .feature-icon {
-                width: 90px; /* スマートフォン表示時のサイズを60pxから90pxに調整 */
-                height: 90px;
+                width: 180px; /* スマートフォン表示時のサイズを90pxから180pxに拡大 */
+                height: 180px;
             }
             /* ▲▲▲【変更点3】ここまで ▲▲▲ */
         }
@@ -454,16 +466,20 @@
             <div class="present-grid fade-in">
                 <div class="present-item">
                     <div class="present-icon">
-                        <!-- うちわの画像パス -->
-                        <img src="image/IMG_3187.jpeg" alt="ぷっぷるうちわ">
+                        <!-- うちわの画像パスを修正し、aタグで囲んで別タブで開くように設定 -->
+                        <a href="image/IMG_3187.jpeg" target="_blank">
+                            <img src="image/IMG_3187.jpeg" alt="ぷっぷるうちわ">
+                        </a>
                     </div>
                     <div class="present-name">ぷっぷるうちわ</div>
                     <div class="present-description">この夏だけの<br>特別デザイン</div>
                 </div>
                 <div class="present-item">
                     <div class="present-icon">
-                        <!-- シールの画像パス -->
-                        <img src="image/IMG_3188.jpeg" alt="オリジナルシール">
+                        <!-- シールの画像パスを修正し、aタグで囲んで別タブで開くように設定 -->
+                        <a href="image/IMG_3188.jpeg" target="_blank">
+                            <img src="image/IMG_3188.jpeg" alt="オリジナルシール">
+                        </a>
                     </div>
                     <div class="present-name">オリジナルシール</div>
                     <div class="present-description">お子様が大喜び<br>記念シール</div>
