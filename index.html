@@ -27,16 +27,17 @@
             padding: 0 40px;
         }
         
-       .header {
-    padding: 80px 0;
-    text-align: center;
-    position: relative;
-    /* ★★★ このURLをローカルパスに修正します ★★★ */
-    background-image: url('image/a002.jpg'); /* '2025年8月'フォルダからの相対パス */
-    background-size: cover;
-    background-position: center;
-    color: white;
-}
+        /* Header */
+        .header {
+            padding: 80px 0; /* 上下の余白を調整 */
+            text-align: center;
+            position: relative; /* 子要素を絶対配置するための基準 */
+            /* ヘッダー背景画像パス (ご自身のローカルパス) */
+            background-image: url('image/a002.jpg'); /* HTMLファイルからの相対パス */
+            background-size: cover; /* 画像が要素全体を覆うように */
+            background-position: center; /* 画像を中央に配置 */
+            color: white; /* ヘッダー内の基本文字色を白に */
+        }
 
         /* ヘッダー背景画像用のオーバーレイ（黒いフィルター） */
         .header::before {
@@ -68,7 +69,6 @@
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        /* ▲▲▲【変更点1】ここまで ▲▲▲ */
         
         .badge {
             display: inline-block;
@@ -124,10 +124,10 @@
             text-align: center;
         }
 
-        /* ▼▼▼【変更点2】プレゼントアイコンのCSS修正 ▼▼▼ */
+        /* ▼▼▼【変更点1】プレゼントアイコンのサイズ調整 ▼▼▼ */
         .present-icon {
-            width: 120px;
-            height: 120px;
+            width: 180px;  /* ここを120pxから180pxに拡大 */
+            height: 180px; /* ここを120pxから180pxに拡大 */
             background-color: #fff;
             border: 2px solid #e8e8e8;
             border-radius: 50%;
@@ -136,7 +136,7 @@
             justify-content: center;
             margin: 0 auto 25px;
             transition: all 0.3s ease;
-            padding: 20px; /* アイコン画像の周りに余白を追加 */
+            padding: 30px; /* アイコン画像の周りの余白を20pxから30pxに調整 */
         }
         
         .present-icon:hover {
@@ -144,13 +144,13 @@
             transform: translateY(-2px);
         }
         
-        /* アイコン画像のスタイルを追加 */
+        /* アイコン画像のスタイル (親要素に合わせてサイズ調整) */
         .present-icon img {
             width: 100%;
             height: 100%;
             object-fit: contain; /* アスペクト比を保ちつつ、枠内に収める */
         }
-        /* ▲▲▲【変更点2】ここまで ▲▲▲ */
+        /* ▲▲▲【変更点1】ここまで ▲▲▲ */
         
         .present-name {
             font-size: 1.2rem;
@@ -265,15 +265,15 @@
             text-align: left;
         }
         
-        /* ▼▼▼【変更点3】特徴アイコンのCSS修正 ▼▼▼ */
+        /* ▼▼▼【変更点2】特徴アイコンのサイズ調整 ▼▼▼ */
         .feature-icon {
-            width: 48px;  /* 画像の幅を指定 */
-            height: 48px; /* 画像の高さを指定 */
+            width: 72px;  /* ここを48pxから72pxに拡大 */
+            height: 72px; /* ここを48pxから72pxに拡大 */
             margin-bottom: 20px;
             display: block;
             object-fit: contain; /* アスペクト比を保つ */
         }
-        /* ▲▲▲【変更点3】ここまで ▲▲▲ */
+        /* ▲▲▲【変更点2】ここまで ▲▲▲ */
         
         .feature-title {
             font-size: 1.2rem;
@@ -407,15 +407,18 @@
                 padding: 30px;
             }
             
+            /* ▼▼▼【変更点3】レスポンシブ時のアイコンサイズ調整 ▼▼▼ */
             .present-icon {
-                width: 100px;
-                height: 100px;
+                width: 140px; /* スマートフォン表示時のサイズを調整 */
+                height: 140px;
+                padding: 25px; /* パディングも調整 */
             }
 
             .feature-icon {
-                width: 40px;
-                height: 40px;
+                width: 60px; /* スマートフォン表示時のサイズを調整 */
+                height: 60px;
             }
+            /* ▲▲▲【変更点3】ここまで ▲▲▲ */
         }
         
         /* Subtle animations */
@@ -449,10 +452,9 @@
         <div class="container">
             <h2 class="section-title">8月参加者にプレゼント（先着20組）</h2>
             <div class="present-grid fade-in">
-                <!-- ▼▼▼【変更点2】プレゼントアイコンを画像に変更 ▼▼▼ -->
                 <div class="present-item">
                     <div class="present-icon">
-                        <!-- ★★★ この src にご自身の「うちわ」画像パスを入れてください ★★★ -->
+                        <!-- うちわの画像パス -->
                         <img src="image/IMG_3187.jpeg" alt="ぷっぷるうちわ">
                     </div>
                     <div class="present-name">ぷっぷるうちわ</div>
@@ -460,13 +462,12 @@
                 </div>
                 <div class="present-item">
                     <div class="present-icon">
-                        <!-- ★★★ この src にご自身の「シール」画像パスを入れてください ★★★ -->
+                        <!-- シールの画像パス -->
                         <img src="image/IMG_3188.jpeg" alt="オリジナルシール">
                     </div>
                     <div class="present-name">オリジナルシール</div>
                     <div class="present-description">お子様が大喜び<br>記念シール</div>
                 </div>
-                <!-- ▲▲▲【変更点2】ここまで ▲▲▲ -->
             </div>
             
             <div class="price-highlight fade-in">
@@ -503,32 +504,30 @@
         <div class="container">
             <h2 class="section-title">ドレミぱーくについて</h2>
             <div class="features-grid">
-                <!-- ▼▼▼【変更点3】特徴アイコンを画像に変更 ▼▼▼ -->
-               <div class="feature-item fade-in">
-    <!-- ★★★ ここを修正 ★★★ -->
-    <img src="image/a003.jpg" alt="音楽遊びアイコン" class="feature-icon">
-    <h3 class="feature-title">音楽遊びが中心</h3>
-    <p class="feature-description">歌ったり、打楽器でリズム遊びをしたり。音楽に合わせて身体を動かす楽しい45分間。先生の生演奏も大人気！</p>
-</div>
-<div class="feature-item fade-in">
-    <!-- ★★★ ここを修正 ★★★ -->
-    <img src="image/a005.jpg" alt="親子の絆アイコン" class="feature-icon">
-    <h3 class="feature-title">親子の絆を深める</h3>
-    <p class="feature-description">音楽を通した豊かな親子のふれあいの中で、お子さまも、ママ・パパも、みんながにっこり笑顔になれます。</p>
-</div>
-<div class="feature-item fade-in">
-    <!-- ★★★ アクセス良好の画像は適当なものがないため、プレースホルダーのままにしています。ご自身の画像があれば変更してください。 ★★★ -->
-    <img src="https://placehold.jp/48x48.png?text=🚃" alt="アクセス良好アイコン" class="feature-icon">
-    <h3 class="feature-title">アクセス良好</h3>
-    <p class="feature-description">JR和邇駅前のヤマハ音楽教室。湖西線沿線からもアクセス良好で、お気軽にご参加いただけます。</p>
-</div>
-<div class="feature-item fade-in">
-    <!-- ★★★ ここを修正 ★★★ -->
-    <img src="image/r008.jpg" alt="表現力アイコン" class="feature-icon">
-    <h3 class="feature-title">表現力を引き出す</h3>
-    <p class="feature-description">ご家庭ではなかなか味わえない多彩な音楽体験で、お子さまの自発的な表現意欲を引き出します。</p>
-</div>
-                <!-- ▲▲▲【変更点3】ここまで ▲▲▲ -->
+                <div class="feature-item fade-in">
+                    <!-- 音楽遊びのアイコン画像を修正 -->
+                    <img src="image/a003.jpg" alt="音楽遊びアイコン" class="feature-icon">
+                    <h3 class="feature-title">音楽遊びが中心</h3>
+                    <p class="feature-description">歌ったり、打楽器でリズム遊びをしたり。音楽に合わせて身体を動かす楽しい45分間。先生の生演奏も大人気！</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <!-- 親子の絆のアイコン画像を修正 -->
+                    <img src="image/a005.jpg" alt="親子の絆アイコン" class="feature-icon">
+                    <h3 class="feature-title">親子の絆を深める</h3>
+                    <p class="feature-description">音楽を通した豊かな親子のふれあいの中で、お子さまも、ママ・パパも、みんながにっこり笑顔になれます。</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <!-- アクセス良好のアイコン画像 (引き続きプレースホルダーです) -->
+                    <img src="https://placehold.jp/48x48.png?text=🚃" alt="アクセス良好アイコン" class="feature-icon">
+                    <h3 class="feature-title">アクセス良好</h3>
+                    <p class="feature-description">JR和邇駅前のヤマハ音楽教室。湖西線沿線からもアクセス良好で、お気軽にご参加いただけます。</p>
+                </div>
+                <div class="feature-item fade-in">
+                    <!-- 表現力のアイコン画像を修正 -->
+                    <img src="image/r008.jpg" alt="表現力アイコン" class="feature-icon">
+                    <h3 class="feature-title">表現力を引き出す</h3>
+                    <p class="feature-description">ご家庭ではなかなか味わえない多彩な音楽体験で、お子さまの自発的な表現意欲を引き出します。</p>
+                </div>
             </div>
         </div>
     </section>
